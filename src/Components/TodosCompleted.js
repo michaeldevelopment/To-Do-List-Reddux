@@ -9,7 +9,7 @@ export default function TodosCompleted() {
   return (
     <>
       <Container className="border border-primary">
-        <h3> Todos completed </h3>
+        <h3> Tareas completadas </h3>
         {todosCompleted.length ? (
           todosCompleted.map((todo) => (
             <li key={todo.id} className="list-unstyled my-2">
@@ -17,7 +17,9 @@ export default function TodosCompleted() {
             </li>
           ))
         ) : (
-          <p> No hay tareas completadas</p>
+          <p>
+            <strong>No hay tareas completadas </strong>
+          </p>
         )}
       </Container>
     </>

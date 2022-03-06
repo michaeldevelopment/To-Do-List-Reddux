@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { TiDelete } from "react-icons/ti";
 
@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo, completedTodo } from "../store/actions";
 
 export default function Todos() {
-  const [checkedValue, setCheckedValue] = useState();
   const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
@@ -16,8 +15,7 @@ export default function Todos() {
   }
 
   const handleCheckbox = (e, todo) => {
-    setCheckedValue(e.target.checked);
-    dispatch(completedTodo(todo, checkedValue));
+    dispatch(completedTodo(todo, e.target.checked));
   };
 
   return (
