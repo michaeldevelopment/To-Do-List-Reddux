@@ -1,10 +1,4 @@
-const initialState = {
-  todos: [],
-  todosCompleted: [],
-  loader: false,
-};
-
-function reducer(prevState = initialState, action) {
+function reducer(prevState, action) {
   switch (action.type) {
     case "LoadTodos":
       return { ...prevState, todos: action.payload };

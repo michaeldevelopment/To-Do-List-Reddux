@@ -2,7 +2,7 @@ import React from "react";
 
 import { TiDelete } from "react-icons/ti";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "../Context/index";
 import { deleteTodo, completedTodo } from "../store/actions";
 
 export default function Todos() {

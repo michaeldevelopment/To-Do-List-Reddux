@@ -9,8 +9,8 @@ import TodoForm from "../Components/TodoForm";
 import Todos from "../Components/Todos";
 import TodosCompleted from "../Components/TodosCompleted";
 
+import { useDispatch } from "../Context/index";
 import { loadTodos } from "../store/actions";
-import { useDispatch } from "react-redux";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(loadTodos(allTodos));
-  });
+  }, []);
 
   return (
     <>

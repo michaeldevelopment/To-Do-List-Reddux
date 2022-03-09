@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { addTodo } from "../store/actions";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "../Context/index";
 
 export default function TodoForm() {
   const [todoItem, setTodoItem] = useState();
@@ -18,7 +18,6 @@ export default function TodoForm() {
     <>
       <form onSubmit={handleSubmit}>
         <input onChange={handleInput} />
-        <input type="submit" hidden />
       </form>
     </>
   );
