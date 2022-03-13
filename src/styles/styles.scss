@@ -1,0 +1,16 @@
+$color: red;
+
+@mixin mixinExample {
+  color: $color;
+  border: 1px solid black;
+}
+
+h3 {
+  @include mixinExample();
+  cursor: pointer;
+  transition: all ease 200ms;
+
+  &:hover {
+    font-size: 3rem;
+  }
+}
