@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { addTodo } from "../store/actions";
 import { useSelector, useDispatch } from "react-redux";
+
+import Form from "react-bootstrap/Form";
 
 export default function TodoForm() {
   const [todoItem, setTodoItem] = useState();
@@ -15,11 +17,17 @@ export default function TodoForm() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleInput} />
-        <input type="submit" hidden />
-      </form>
-    </>
+    <Form onSubmit={handleSubmit} className="my-3">
+      <h4>Add a new task</h4>
+      {"  "}
+      <Form.Control
+        type="text"
+        placeholder="Are u ready 4 a new task lazy buddy?"
+        col="3"
+        onChange={handleInput}
+        className="w-50 text-center mx-auto"
+      />
+    </Form>
   );
 }
+  

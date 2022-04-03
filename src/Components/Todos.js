@@ -1,9 +1,9 @@
-import React from "react";
-
-import { TiDelete } from "react-icons/ti";
-
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "../Context/index";
 import { deleteTodo, completedTodo } from "../store/actions";
+
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import Button from "react-bootstrap/Button";
 
 export default function Todos() {
   const todoList = useSelector((state) => state.todos);
@@ -22,16 +22,30 @@ export default function Todos() {
     <>
       {todoList.map((todo) => (
         <li key={todo.id} className="list-unstyled my-2">
-          <TiDelete className="text-danger" />
           <input
             type="checkbox"
             className="mx-2"
             onChange={(e) => handleCheckbox(e, todo)}
           />
           {todo.name}
-          <button onClick={(e) => handleDelete(e, todo)} className="mx-3">
-            Eliminar tarea
-          </button>
+
+          <OverlayTrigger
+            key={todo.id}
+            placement="right"
+            overlay={
+              <Tooltip id={todo.id} key={todo.id}>
+                Eliminar tarea
+              </Tooltip>
+            }
+          >
+            <Button
+              variant="danger"
+              onClick={(e) => handleDelete(e, todo)}
+              className="mx-3"
+            >
+              ✗{" "}
+            </Button>
+          </OverlayTrigger>
         </li>
       ))}
     </>

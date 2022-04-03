@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import Loader from "../Components/Loader";
 import TodoForm from "../Components/TodoForm";
 import Todos from "../Components/Todos";
 import TodosCompleted from "../Components/TodosCompleted";
@@ -17,15 +16,15 @@ export default function Home() {
 
   const allTodos = [
     {
-      name: "Comprar la leche",
+      name: "Buy milk",
       id: 1,
     },
     {
-      name: "Comprar el pan",
+      name: "Buy bread",
       id: 2,
     },
     {
-      name: "Ir al doctor",
+      name: "Go to the doctor",
       id: 3,
     },
   ];
@@ -36,14 +35,14 @@ export default function Home() {
 
   return (
     <>
-      <Container>
+      <Container fluid>
         <Row>
-          <Col>
-            <Loader />
+          <Col lg={6} className="todosPending">
+            <h3> ToDo List with Redux </h3>
             <TodoForm />
             <Todos />
           </Col>
-          <Col>
+          <Col lg={6} className="todosCompleted">
             <TodosCompleted />
           </Col>
         </Row>

@@ -13,7 +13,12 @@ function reducer(prevState = initialState, action) {
     case "deleteTodo":
       return {
         ...prevState,
-        todos: prevState.todos.filter((todo) => todo.id !== action.payload.id),
+        todos: prevState.todos.filter(
+          (todo) => todo.name !== action.payload.name
+        ),
+        todosCompleted: prevState.todosCompleted.filter(
+          (todo) => todo.id !== action.payload.id
+        ),
       };
     case "addCompletedTodo":
       return {
@@ -24,7 +29,7 @@ function reducer(prevState = initialState, action) {
       return {
         ...prevState,
         todosCompleted: prevState.todosCompleted.filter(
-          (todo) => todo.id !== action.payload.id
+          (todo) => todo.name !== action.payload.name
         ),
       };
     default:
