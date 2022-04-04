@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 import { addTodo } from "../store/actions";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Form from "react-bootstrap/Form";
 
 export default function TodoForm() {
   const [todoItem, setTodoItem] = useState();
-  const todoList = useSelector((state) => state.todos);
   const dispatch = useDispatch();
+  const idTodo = useId();
 
   const handleInput = (e) => setTodoItem(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo({ name: todoItem, id: todoList.length + 1 }));
+    dispatch(addTodo({ name: todoItem, id: idTodo }));
   };
 
   return (
@@ -30,4 +30,3 @@ export default function TodoForm() {
     </Form>
   );
 }
-  
