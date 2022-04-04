@@ -1,4 +1,4 @@
-import { useState, useId } from "react";
+import { useState } from "react";
 import { addTodo } from "../store/actions";
 import { useDispatch } from "react-redux";
 
@@ -7,13 +7,12 @@ import Form from "react-bootstrap/Form";
 export default function TodoForm() {
   const [todoItem, setTodoItem] = useState();
   const dispatch = useDispatch();
-  const idTodo = useId();
 
   const handleInput = (e) => setTodoItem(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo({ name: todoItem, id: idTodo }));
+    dispatch(addTodo({ name: todoItem, id: Date.now() }));
   };
 
   return (
