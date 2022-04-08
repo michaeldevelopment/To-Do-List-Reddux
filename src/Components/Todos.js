@@ -27,7 +27,8 @@ export default function Todos() {
             className="mx-2"
             onChange={(e) => handleCheckbox(e, todo)}
           />
-          {todo.name}
+
+          <span className="todoItem">{todo.name}</span>
 
           <OverlayTrigger
             key={todo.id}

@@ -22,6 +22,8 @@ img {
   height: auto;
 }
 
+// Uso de media queries
+
 @media screen and (max-width: 800px) {
   img {
     display:none;
@@ -35,10 +37,30 @@ img {
     background-image: url("../images/lazy2.jpg");
     background-size: cover;
   }
+  
 }
 
 @media screen and (min-width: 800px) and (max-width:1000px) {
   .todosPending {
     color: gray;
+  }
+
+}
+
+// Pseudoelementos
+
+// ::selection me permite acceder al elemento en el momento que le paso el click para seleccionarlo en la web
+// En este caso, quiero cambiarle el color de fondo.
+
+.todoItem::selection {
+  background-color: gray;
+}
+
+// Los pseudoelementos se consideran HIJOS del elemento principal
+
+.todoItem:hover {
+  cursor: pointer;
+  &::after {
+    content: " >.< "
   }
 }
