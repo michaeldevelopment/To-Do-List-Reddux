@@ -1,4 +1,4 @@
-import React from "react";
+import LazyGirl from "../images/lazy.gif";
 
 import { useSelector } from "react-redux";
 
@@ -17,9 +17,12 @@ export default function TodosCompleted() {
             </li>
           ))
         ) : (
-          <p>
-            <strong> Hurry up and finish your tasks lazy! </strong>
-          </p>
+          <>
+            <p>
+              <strong> Hurry up and finish your tasks lazy! </strong>
+            </p>
+            <img src={LazyGirl} alt="lazy" />
+          </>
         )}
       </Container>
     </>
