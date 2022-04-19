@@ -11,7 +11,7 @@ import TodosCompleted from "../Components/TodosCompleted";
 import { loadTodos } from "../store/actions";
 import { useDispatch } from "react-redux";
 
-import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -19,15 +19,15 @@ export default function Home() {
   const allTodos = [
     {
       name: "Buy milk",
-      id: 1,
+      id: Date.now() + 1,
     },
     {
       name: "Buy bread",
-      id: 2,
+      id: Date.now() + 2,
     },
     {
       name: "Go to the doctor",
-      id: 3,
+      id: Date.now() + 3,
     },
   ];
 
@@ -40,16 +40,18 @@ export default function Home() {
       <Container fluid>
         <Row>
           <Col lg={6} className="todosPending">
-            <h3>ToDo List with Redux</h3>
+            <motion.h3
+              initial={{ opacity: 0, rotate: 15 }}
+              animate={{ opacity: 1, rotate: 0 }}
+            >
+              ToDo List with Redux
+            </motion.h3>
             <TodoForm />
-            <AnimatePresence>
-              <Todos />
-            </AnimatePresence>
+
+            <Todos />
           </Col>
           <Col lg={6} className="todosCompleted">
-            <AnimatePresence>
-              <TodosCompleted />
-            </AnimatePresence>
+            <TodosCompleted />
           </Col>
         </Row>
       </Container>

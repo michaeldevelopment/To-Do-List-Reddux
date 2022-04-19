@@ -4,9 +4,16 @@ import { useDispatch } from "react-redux";
 
 import Form from "react-bootstrap/Form";
 
+import { motion } from "framer-motion";
+
 export default function TodoForm() {
   const [todoItem, setTodoItem] = useState();
   const dispatch = useDispatch();
+
+  const items = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  };
 
   const handleInput = (e) => setTodoItem(e.target.value);
 
@@ -17,7 +24,9 @@ export default function TodoForm() {
 
   return (
     <Form onSubmit={handleSubmit} className="my-3">
-      <h4>Add a new task</h4>
+      <motion.h4 variants={items} initial="hidden" animate="show">
+        Add a new task
+      </motion.h4>
       {"  "}
       <Form.Control
         type="text"
