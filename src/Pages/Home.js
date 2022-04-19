@@ -38,7 +38,7 @@ export default function Home() {
       <Container fluid>
         <Row>
           <Col lg={6} className="todosPending">
-            <h3> ToDo List with Redux </h3>
+            <h3>ToDo List with Redux</h3>
             <TodoForm />
             <Todos />
           </Col>

@@ -19,7 +19,7 @@ export default function Todos() {
   };
 
   return (
-    <>
+    <ul>
       {todoList.map((todo) => (
         <li key={todo.id} className="list-unstyled my-2">
           <input
@@ -49,6 +49,6 @@ export default function Todos() {
           </OverlayTrigger>
         </li>
       ))}
-    </>
+    </ul>
   );
 }
