@@ -11,3 +11,4 @@ export const completedTodo = (todo, completedTodo) =>
         type: "deleteCompletedTodo",
         payload: todo,
       };
+

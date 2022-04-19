@@ -14,6 +14,14 @@
   text-align: center;
   padding: 20px;
   background-image: url("../images/backgr-todoList.jpg");
+
+  .listTodosPending {
+    background-color: white;
+    box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.09);
+    padding: 5px;
+    border: 0px 30px;
+    list-style-type: none;
+  }
 }
 
 img {

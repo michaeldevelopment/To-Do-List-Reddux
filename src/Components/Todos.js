@@ -1,9 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTodo, completedTodo } from "../store/actions";
+import { deleteTodo, completedTodo, loadTodos } from "../store/actions";
 
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Button from "react-bootstrap/Button";
+
+import { Reorder } from "framer-motion";
 
 export default function Todos() {
   const todoList = useSelector((state) => state.todos);
@@ -18,10 +20,27 @@ export default function Todos() {
     dispatch(completedTodo(todo, e.target.checked));
   };
 
+  const items = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  };
+
   return (
-    <ul>
-      {todoList.map((todo) => (
-        <li key={todo.id} className="list-unstyled my-2">
+    <Reorder.Group
+      values={todoList}
+      onReorder={(todos) => dispatch(loadTodos(todos))}
+    >
+      {todoList.map((todo, i) => (
+        <Reorder.Item
+          key={todo.id}
+          className="list-unstyled listTodosPending my-2"
+          variants={items}
+          initial="hidden"
+          animate="show"
+          transition={{ duration: 0.3, delay: i * 0.08 }}
+          exit="hidden"
+          value={todo}
+        >
           <input
             type="checkbox"
             className="mx-2"
@@ -47,8 +66,8 @@ export default function Todos() {
               ✗{" "}
             </Button>
           </OverlayTrigger>
-        </li>
+        </Reorder.Item>
       ))}
-    </ul>
+    </Reorder.Group>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useId, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,6 +10,8 @@ import TodosCompleted from "../Components/TodosCompleted";
 
 import { loadTodos } from "../store/actions";
 import { useDispatch } from "react-redux";
+
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -40,10 +42,14 @@ export default function Home() {
           <Col lg={6} className="todosPending">
             <h3>ToDo List with Redux</h3>
             <TodoForm />
-            <Todos />
+            <AnimatePresence>
+              <Todos />
+            </AnimatePresence>
           </Col>
           <Col lg={6} className="todosCompleted">
-            <TodosCompleted />
+            <AnimatePresence>
+              <TodosCompleted />
+            </AnimatePresence>
           </Col>
         </Row>
       </Container>
