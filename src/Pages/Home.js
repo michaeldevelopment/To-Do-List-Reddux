@@ -46,8 +46,8 @@ export default function Home() {
             >
               ToDo List with Redux
             </motion.h3>
-            <TodoForm />
 
+            <TodoForm />
             <Todos />
           </Col>
           <Col lg={6} className="todosCompleted">

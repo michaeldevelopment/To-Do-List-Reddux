@@ -1,12 +1,9 @@
-const initialState = {
-  todos: [],
-  todosCompleted: [],
-  loader: false,
-};
+import initialState from "./initialState";
+import {initialStateType, reducerActions } from "../types"
 
-function reducer(prevState = initialState, action) {
+function reducer(prevState:initialStateType = initialState, action: reducerActions):initialStateType {
   switch (action.type) {
-    case "LoadTodos":
+    case "loadTodos": 
       return { ...prevState, todos: action.payload };
     case "addTodo":
       return { ...prevState, todos: prevState.todos.concat(action.payload) };
