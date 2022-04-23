@@ -46,7 +46,7 @@ export default function Home() {
               initial={{ opacity: 0, rotate: 15 }}
               animate={{ opacity: 1, rotate: 0 }}
             >
-              ToDo List with Redux
+              ToDo List with Redux and Typescript
             </motion.h3>
 
             <TodoForm />
