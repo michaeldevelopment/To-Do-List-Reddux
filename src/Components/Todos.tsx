@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo, completedTodo, loadTodos } from "../store/actions";
 
@@ -7,20 +8,37 @@ import Button from "react-bootstrap/Button";
 
 import { AnimatePresence, Reorder } from "framer-motion";
 
+import { todo, initialStateType } from "../types";
+
 export default function Todos() {
-  const todoList = useSelector((state) => state.todos);
+  const todoList = useSelector((state: initialStateType) => state.todos);
   const dispatch = useDispatch();
 
-  function handleDelete(e, todo) {
+  function handleDelete(
+    e: React.MouseEvent<HTMLButtonElement>,
+    todoItem: todo
+  ) {
     e.preventDefault();
-    dispatch(deleteTodo(todo));
+    dispatch(deleteTodo(todoItem));
   }
 
-  const handleCheckbox = (e, todo) => {
-    dispatch(completedTodo(todo, e.target.checked));
+  const handleCheckbox = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    todoItem: todo
+  ) => {
+    dispatch(completedTodo(todoItem, e.target.checked));
   };
 
-  const items = {
+  type variantItems = {
+    hidden: {
+      opacity: number;
+    };
+    show: {
+      opacity: number;
+    };
+  };
+
+  const items: variantItems = {
     hidden: { opacity: 0 },
     show: { opacity: 1 },
   };
@@ -65,7 +83,7 @@ export default function Todos() {
                 onClick={(e) => handleDelete(e, todo)}
                 className="mx-3"
               >
-                ✗{" "}
+                ✗
               </Button>
             </OverlayTrigger>
           </Reorder.Item>

@@ -1,15 +1,26 @@
-import LazyGirl from "../images/lazy.gif";
-
 import { useSelector } from "react-redux";
 
 import Container from "react-bootstrap/Container";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function TodosCompleted() {
-  const todosCompleted = useSelector((state) => state.todosCompleted);
+import { initialStateType } from "../types";
 
-  const items = {
+export default function TodosCompleted() {
+  const todosCompleted = useSelector(
+    (state: initialStateType) => state.todosCompleted
+  );
+
+  type variantItems = {
+    hidden: {
+      opacity: number;
+    };
+    show: {
+      opacity: number;
+    };
+  };
+
+  const items: variantItems = {
     hidden: { opacity: 0 },
     show: { opacity: 1 },
   };
@@ -17,7 +28,6 @@ export default function TodosCompleted() {
   return (
     <Container>
       <motion.h3
-        variants={items}
         initial={{ opacity: 0, rotate: 15 }}
         animate={{ opacity: 1, rotate: 0 }}
       >
@@ -34,7 +44,7 @@ export default function TodosCompleted() {
               animate="show"
               transition={{ duration: 0.3, delay: i * 0.08 }}
               exit={{ opacity: 0, rotate: 15 }}
-              layoutId={i}
+              layoutId={i.toString()}
             >
               {todo.name}
             </motion.li>
@@ -45,8 +55,8 @@ export default function TodosCompleted() {
           <motion.p variants={items} initial="hidden" animate="show">
             <strong>Hurry up and finish your tasks lazy!</strong>
           </motion.p>
-          <img
-            src={LazyGirl}
+          <motion.img
+            src="../images/lazy"
             alt="lazy"
             variants={items}
             initial="hidden"

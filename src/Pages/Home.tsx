@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -13,21 +13,23 @@ import { useDispatch } from "react-redux";
 
 import { motion } from "framer-motion";
 
+import { todos } from "../types";
+
 export default function Home() {
   const dispatch = useDispatch();
 
-  const allTodos = [
+  const allTodos: todos = [
     {
       name: "Buy milk",
-      id: Date.now() + 1,
+      id: (Date.now() + 1).toString(),
     },
     {
       name: "Buy bread",
-      id: Date.now() + 2,
+      id: (Date.now() + 2).toString(),
     },
     {
       name: "Go to the doctor",
-      id: Date.now() + 3,
+      id: (Date.now() + 3).toString(),
     },
   ];
 

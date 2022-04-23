@@ -1,4 +1,4 @@
-import { todos, todo } from "../types";
+import { todos, todo } from "../types"
 
 export const loadTodos = (todos: todos) => ({
   type: "loadTodos",

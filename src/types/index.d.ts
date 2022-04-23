@@ -1,3 +1,5 @@
+declare module '*.jpg';
+
 const ACTION_TYPES = {
   loadTodos: "loadTodos",
   addTodo: "addTodo",
