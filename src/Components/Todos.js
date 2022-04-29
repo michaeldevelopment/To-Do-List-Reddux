@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "../Context/index";
+import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo, completedTodo } from "../store/actions";
 
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";

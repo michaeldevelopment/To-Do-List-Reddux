@@ -11,6 +11,8 @@ import TodosCompleted from "../Components/TodosCompleted";
 import { loadTodos } from "../store/actions";
 import { useDispatch } from "react-redux";
 
+import DocumentTitle from "react-document-title";
+
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -29,12 +31,17 @@ export default function Home() {
     },
   ];
 
+  // Puedo tambien manipular el DOM para cambiar el titulo de una pagina con document.title = xx...
   useEffect(() => {
     dispatch(loadTodos(allTodos));
-  });
+    document.title = "Welcome again to Home";
+  }, []);
 
+  // El componente DocumentTitle me permite agregar diferentes titulos a las paginas de un Page en el DOM
+  // Por ejemplo, para la pagina Home, voy a ver en la pestana un titulo que diga "Welcome to .."
+  // Puedo agregar diferentes titulos segun sea la pagina
   return (
-    <>
+    <DocumentTitle title="Welcome to Home Page">
       <Container fluid>
         <Row>
           <Col lg={6} className="todosPending">
@@ -47,6 +54,6 @@ export default function Home() {
           </Col>
         </Row>
       </Container>
-    </>
+    </DocumentTitle>
   );
 }
