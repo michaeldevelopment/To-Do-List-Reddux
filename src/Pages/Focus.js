@@ -9,6 +9,7 @@ import FocusLock from "react-focus-lock";
 export default function Focus() {
   const [tooltip, setTooltip] = useState(false);
   const [show, setShow] = useState(false);
+  const [formShow, setFormShow] = useState(false);
   const focusedContent = useRef(null);
   const focused = useRef(null);
 
@@ -19,7 +20,7 @@ export default function Focus() {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    setShow(true);
+    setFormShow(true);
   };
 
   const handleFocus = (e) => {
@@ -39,7 +40,7 @@ export default function Focus() {
         <h1 ref={focusedContent} tabIndex="0">
           Welcome to the focus page!
         </h1>
-        {show ? (
+        {formShow ? (
           <FocusElement />
         ) : (
           <form role="form">

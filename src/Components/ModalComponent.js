@@ -12,8 +12,8 @@ const ModalComponent = ({ show, setShow }) => {
     return () => window.removeEventListener("keydown", handleKeyEvent);
   }, []);
 
-  const handleKeyEvent = async (event) => {
-    event.code === "Escape" ? await setShow(false) : null;
+  const handleKeyEvent = (event) => {
+    event.key === "Escape" ? setTimeout(setShow(false), 4000) : null;
   };
 
   return (
