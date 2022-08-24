@@ -5,31 +5,17 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import TodoForm from "../Components/TodoForm";
-import Todos from "../Components/Todos";
-import TodosCompleted from "../Components/TodosCompleted";
+import Todos from "../Components/TodoList";
+import TodosCompleted from "../Components/TodoCompletedList";
 
 import { loadTodos } from "../store/actions";
 import { useDispatch } from "react-redux";
 
+import { allTodos } from "../data/data";
 import { motion } from "framer-motion";
 
 export default function Home() {
   const dispatch = useDispatch();
-
-  const allTodos = [
-    {
-      name: "Buy milk",
-      id: Date.now() + 1,
-    },
-    {
-      name: "Buy bread",
-      id: Date.now() + 2,
-    },
-    {
-      name: "Go to the doctor",
-      id: Date.now() + 3,
-    },
-  ];
 
   useEffect(() => {
     dispatch(loadTodos(allTodos));

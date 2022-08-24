@@ -1,10 +1,11 @@
-import LazyGirl from "../images/lazy.gif";
-
 import { useSelector } from "react-redux";
 
 import Container from "react-bootstrap/Container";
 
 import { motion, AnimatePresence } from "framer-motion";
+
+import TodoCompleted from "./TodoCompleted";
+import EmptyTodosCompleted from "./EmptyTodosCompleted";
 
 export default function TodosCompleted() {
   const todosCompleted = useSelector((state) => state.todosCompleted);
@@ -36,23 +37,12 @@ export default function TodosCompleted() {
               exit={{ opacity: 0, rotate: 15 }}
               layoutId={i}
             >
-              {todo.name}
+              <TodoCompleted todo={todo} />
             </motion.li>
           ))}
         </AnimatePresence>
       ) : (
-        <>
-          <motion.p variants={items} initial="hidden" animate="show">
-            <strong>Hurry up and finish your tasks lazy!</strong>
-          </motion.p>
-          <img
-            src={LazyGirl}
-            alt="lazy"
-            variants={items}
-            initial="hidden"
-            animate="show"
-          />
-        </>
+        <EmptyTodosCompleted />
       )}
     </Container>
   );
