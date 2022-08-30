@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Todo from "./Todo";
 
@@ -6,8 +6,15 @@ import { loadTodos } from "../store/actions";
 
 import { AnimatePresence, Reorder } from "framer-motion";
 
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+import Button from "react-bootstrap/Button";
+
+import { handleDelete, handleCheckbox } from "../todoActions";
+
 export default function Todos() {
   const todoList = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
 
   const items = {
     hidden: { opacity: 0 },
@@ -32,7 +39,30 @@ export default function Todos() {
             value={todo}
             layoutId={todo.id}
           >
-            <Todo key={todo.id} todo={todo} />
+            <Todo key={todo.id} todo={todo}>
+              <input
+                type="checkbox"
+                className="mx-2"
+                onChange={(e) => handleCheckbox(e, todo, dispatch)}
+              />
+              <OverlayTrigger
+                key={todo.id}
+                placement="right"
+                overlay={
+                  <Tooltip id={todo.id} key={todo.id}>
+                    Eliminar tarea
+                  </Tooltip>
+                }
+              >
+                <Button
+                  variant="danger"
+                  onClick={() => handleDelete(todo, dispatch)}
+                  className="mx-3"
+                >
+                  ✗
+                </Button>
+              </OverlayTrigger>
+            </Todo>
           </Reorder.Item>
         ))}
       </AnimatePresence>

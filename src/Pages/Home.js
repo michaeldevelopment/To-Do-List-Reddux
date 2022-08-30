@@ -5,8 +5,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import TodoForm from "../Components/TodoForm";
-import Todos from "../Components/TodoList";
-import TodosCompleted from "../Components/TodoCompletedList";
+import TodoList from "../Components/TodoList";
+import TodoCompletedList from "../Components/TodoCompletedList";
 
 import { loadTodos } from "../store/actions";
 import { useDispatch } from "react-redux";
@@ -34,10 +34,10 @@ export default function Home() {
             </motion.h3>
             <TodoForm />
 
-            <Todos />
+            <TodoList />
           </Col>
           <Col lg={6} className="todosCompleted">
-            <TodosCompleted />
+            <TodoCompletedList />
           </Col>
         </Row>
       </Container>

@@ -4,8 +4,8 @@ import Container from "react-bootstrap/Container";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-import TodoCompleted from "./TodoCompleted";
-import EmptyTodosCompleted from "./EmptyTodosCompleted";
+import EmptyTodosCompleted from "./EmptyTodos";
+import Todo from "./Todo";
 
 export default function TodosCompleted() {
   const todosCompleted = useSelector((state) => state.todosCompleted);
@@ -37,7 +37,7 @@ export default function TodosCompleted() {
               exit={{ opacity: 0, rotate: 15 }}
               layoutId={i}
             >
-              <TodoCompleted todo={todo} />
+              <Todo todo={todo} />
             </motion.li>
           ))}
         </AnimatePresence>
