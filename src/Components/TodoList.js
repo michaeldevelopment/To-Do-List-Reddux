@@ -39,7 +39,7 @@ export default function Todos() {
             value={todo}
             layoutId={todo.id}
           >
-            <Todo key={todo.id} todo={todo}>
+            <Todo key={todo.id} todoName={todo.name}>
               <input
                 type="checkbox"
                 className="mx-2"

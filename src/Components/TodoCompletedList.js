@@ -37,7 +37,7 @@ export default function TodosCompleted() {
               exit={{ opacity: 0, rotate: 15 }}
               layoutId={i}
             >
-              <Todo todo={todo} />
+              <Todo todoName={todo.name} />
             </motion.li>
           ))}
         </AnimatePresence>
