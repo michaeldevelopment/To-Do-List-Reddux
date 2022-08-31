@@ -6,9 +6,8 @@ import Form from "react-bootstrap/Form";
 
 import { motion } from "framer-motion";
 
-export default function TodoForm() {
+export default function TodoForm({ onSubmit }) {
   const [todoItem, setTodoItem] = useState();
-  const dispatch = useDispatch();
 
   const items = {
     hidden: { opacity: 0 },
@@ -19,7 +18,7 @@ export default function TodoForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo({ name: todoItem, id: Date.now() }));
+    onSubmit({ name: todoItem, id: Date.now() });
   };
 
   return (

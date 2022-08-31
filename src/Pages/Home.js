@@ -21,6 +21,10 @@ export default function Home() {
     dispatch(loadTodos(allTodos));
   });
 
+  const handleSubmitForm = (todoObject) => {
+    dispatch(addTodo(todoObject));
+  };
+
   return (
     <>
       <Container fluid>
@@ -32,7 +36,7 @@ export default function Home() {
             >
               ToDo List with Redux
             </motion.h3>
-            <TodoForm />
+            <TodoForm onSubmit={handleSubmitForm} />
 
             <TodoList />
           </Col>
